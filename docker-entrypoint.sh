@@ -1,5 +1,5 @@
 #!/bin/sh
-seet -xe
+set -xe
 
 V2DIR=${GOPATH}/src/v2ray.com/core
 
