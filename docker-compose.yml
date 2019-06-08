@@ -2,15 +2,13 @@ version: "3.6"
 
 services: 
   build:
-    build: 
-      context: .
-      dockerfile: docker/Dockerfile
+    image: shynome/v2ray-build
     command: [
       "//release:v2ray_linux_arm64_package",
       "//release:v2ray_linux_arm_package",
     ]
     volumes: 
-    - v2ray_v1:/v2ray-build/src/v2ray.com/core
+    - v2ray_v1:/v2ray-build/code/
     - release_v1:/v2ray-build/release/
 
 volumes: 
