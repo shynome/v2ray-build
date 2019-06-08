@@ -10,4 +10,6 @@ fi
 
 tar -cC ${V2DIR}/vendor . | tar -xC ${GOPATH}/src 
 
-exec $HOME/bin/bazel build --action_env=GOPATH=$GOPATH --action_env=PATH=$PATH $@
+$HOME/bin/bazel build --action_env=GOPATH=$GOPATH --action_env=PATH=$PATH $@
+
+cp ${V2DIR}/bazel-bin/release/*.zip /v2ray-build/release/
