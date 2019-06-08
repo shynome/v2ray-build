@@ -1,0 +1,26 @@
+version: "3.6"
+
+services: 
+  build:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+    command: [
+      "//release:v2ray_linux_arm64_package",
+      "//release:v2ray_linux_arm_package",
+    ]
+    volumes: 
+    - v2ray_v1:/v2ray-build/src/v2ray.com/core
+    - release_v1:/v2ray-build/release/
+
+volumes: 
+  v2ray_v1:
+    driver_opts: 
+      type: cifs
+      device: //192.168.56.1/v2ray-core/
+      o: username=cifs,password=cifs,file_mode=0777,dir_mode=0777
+  release_v1:
+    driver_opts: 
+      type: cifs
+      device: //192.168.56.1/v2ray-core/build-release
+      o: username=cifs,password=cifs,file_mode=0777,dir_mode=0777
